@@ -11,7 +11,10 @@ import NavBar from './pages/NavBar';
 import SideBar from './pages/SideBar';
 import Quals from './pages/Quals';
 import Questions from './pages/Questions';
+import Voc from './pages/Voc';
+import VocView from './pages/VocView';
 import Reviews from './pages/Reviews';
+import VocQuestion from './pages/VocQuestion';
 
 function App() {
   // 로그인 상태 관리
@@ -61,6 +64,9 @@ function App() {
             <Route path="/quals" element={<Quals/>} />
             <Route path="/questions" element={<Questions/>} />
             <Route path="/reviews" element={<Reviews/>} />
+            <Route path='/voc' element={<Voc />} />  
+            <Route path='/voc/:vocId' element={<VocView />}  />
+            <Route path='/voc/question' element={<VocQuestion />}  />
           </Routes>
         </main>
       </Router>

@@ -5,7 +5,7 @@ import CheckForm from './CheckForm';
 import IdAuth from "./IdAuth";
 import NameAuth from './NameAuth';
 import Profile from './Profile';
-import DepComboBox from './DepComboBox';
+import DepComboBox from './CateComboBox';
 import NumComboBox from './NumComboBox';
 import TextField from "@mui/material/TextField";
 import { Container } from '@mui/system';
@@ -131,7 +131,7 @@ function SignIn() {
     //         else{
     //             alert("다른 ID를 입력해주세요");
     //         }
-    //     });
+    //  });
 
   }
   

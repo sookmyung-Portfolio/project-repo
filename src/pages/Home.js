@@ -16,25 +16,25 @@ function Home() {
               <div className="row" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', 
             width: '100%', height: '10vh',}}>
                 <div style={{margin: "30px"}}>
-                  <Link to ="/quals">
-                    <img className="quals" alt="quals" src={qual} width="200px"></img>
-                  </Link>  
-                  <h4 className="board">스펙게시판</h4>            
+                  <Link to ="/questions">
+                    <img className="questions" alt="questions" src={question} width="200px"></img>
+                  </Link>              
+                  <h4 className="board">질문게시판</h4>
                 </div>
                 <br />
                 <div style={{margin: "30px"}}>
                   <Link to ="/reviews">
                     <img className="reviews" alt="reviews" src={review} width="200px"></img>
                   </Link>      
-                  <h4 className="board">합격후기게시판</h4>           
+                  <h4 className="board">취업후기게시판</h4>           
                 </div>
                 <br />  
                 <div style={{margin: "30px"}}>
-                  <Link to ="/questions">
-                    <img className="questions" alt="questions" src={question} width="200px"></img>
-                  </Link>              
-                  <h4 className="board">질문게시판</h4>
-                </div>          
+                  <Link to ="/quals">
+                    <img className="quals" alt="quals" src={qual} width="200px"></img>
+                  </Link>  
+                  <h4 className="board">스펙게시판</h4>            
+                </div>         
               </div>
             <Routes>  
               <Route path="/quals" element={<Quals/>} />
