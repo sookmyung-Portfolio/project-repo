@@ -6,6 +6,7 @@ import { Button, FormControl } from '@mui/material';
 import CateComboBox from './CateComboBox';
 import TextField from "@mui/material/TextField";
 import SendIcon from '@mui/icons-material/Send';
+import DepComboBox from './DepComboBox';
 
 function GetCategory() {
   const [category, setCategory] = useState({});
@@ -42,6 +43,8 @@ function VocQuestion() {
   const [category, setCategory] = useState(1);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [mainDept, setMainDept] = useState('');
+  const [subDept, setSubDept] = useState('');
   const [stationId, setStationId] = useState('ST-4');
 
   const body = {
@@ -54,17 +57,21 @@ function VocQuestion() {
   return (<>
     <Container maxWidth="sm" style={{ 
             display: 'flex', justifyContent: 'center', alignItems: 'center', 
-            width: '100%', height: '0vh',  
+            width: '100%', height: '5vh',  
             }}>
         <form style={{ display: 'flex', flexDirection: 'column'}}>
-            <h2 >게시글 작성</h2>
+            <h2 >게시글 작성 - 스펙게시판</h2>
             <div className="voc-view-row">
                 <label>제목</label>
                 <TextField size="small" onChange={(event) => setTitle(event.target.value)}></TextField>
             </div>
             <div className="voc-view-row">
-                <label>태그</label>
-                <CateComboBox onChange={(event) => setCategory(event.target.value)} />
+                <label>본전공</label>
+                <DepComboBox onChange={(event) => setMainDept(event.target.value)} />
+            </div>
+            <div className="voc-view-row">
+                <label>복수/심화전공</label>
+                <DepComboBox onChange={(event) => setSubDept(event.target.value)} />
             </div>
             <FormControl sx={{ m: 1, width: '60ch' }} variant="filled">
                 <TextField 
