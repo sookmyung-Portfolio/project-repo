@@ -5,7 +5,7 @@ import CheckForm from './CheckForm';
 import IdAuth from "./IdAuth";
 import NameAuth from './NameAuth';
 import Profile from './Profile';
-import DepComboBox from './CateComboBox';
+import DepComboBox from './DepComboBox';
 import NumComboBox from './NumComboBox';
 import TextField from "@mui/material/TextField";
 import { Container } from '@mui/system';
