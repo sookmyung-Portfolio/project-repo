@@ -6,7 +6,7 @@ import TextField from "@mui/material/TextField";
 import { Container } from '@mui/system';
 import { Button } from '@mui/material';
 
-function LoginForm( {isLogin} ) {
+function LoginForm( {userId} ) {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
   
@@ -16,12 +16,11 @@ function LoginForm( {isLogin} ) {
         authen ? 
       	// Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
           <Route
-          isLogin={isLogin}
+          userId={userId}
           path="/profile"
-          element={<Profile isLogin= {isLogin} user={id}/>}
+          element={<Profile isLogin={userId} user={id}/>}
         /> : 
         <Link to="/login"/>
-        //Auth({ id, password })? <Navigate to={from} /> : <Link to="/signin"/>
         //유저값이 true이면 메인 페이지 혹은 이전 페이지로 리턴, 없으면 회원가입 페이지로 이동 
     } catch (e) {
       alert('Failed to login');
