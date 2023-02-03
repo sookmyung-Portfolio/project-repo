@@ -3,10 +3,10 @@ import axios from 'axios';
 import { Container } from "@mui/material";
 import './VocView.css';
 import { Button, FormControl } from '@mui/material';
-import CateComboBox from './CateComboBox';
+import CateComboBox from '../CateComboBox';
 import TextField from "@mui/material/TextField";
 import SendIcon from '@mui/icons-material/Send';
-import DepComboBox from './DepComboBox';
+import DepComboBox from '../DepComboBox';
 
 function GetCategory() {
   const [category, setCategory] = useState({});

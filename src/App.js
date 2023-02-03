@@ -11,10 +11,16 @@ import NavBar from './pages/NavBar';
 import SideBar from './pages/SideBar';
 import Quals from './pages/Quals';
 import Questions from './pages/Questions';
-import Voc from './pages/Voc';
-import VocView from './pages/VocView';
+import Voc from './pages/VocQuals/Voc';
+import VocView from './pages/VocQuals/VocView';
 import Reviews from './pages/Reviews';
-import VocQuestion from './pages/VocQuestion';
+import VocQuestion from './pages/VocQuals/VocQuestion';
+import Voc2 from './pages/VocReview/Voc2';
+import VocView2 from './pages/VocReview/VocView2';
+import VocQuestion2 from './pages/VocReview/VocQuestion2';
+import Voc3 from './pages/VocQuestions/Voc3';
+import VocView3 from './pages/VocQuestions/VocView3';
+import VocQuestion3 from './pages/VocQuestions/VocQuestions3';
 
 function App() {
   // 로그인 상태 관리
@@ -67,6 +73,15 @@ function App() {
             <Route path='/voc' element={<Voc />} />  
             <Route path='/voc/:vocId' element={<VocView />}  />
             <Route path='/voc/question' element={<VocQuestion />}  />
+            <Route path='/voc2' element={<Voc2 />} /> 
+            <Route path='/voc2/question2' element={<VocQuestion2 />}  />
+            <Route path='/voc2/:vocId' element={<VocView2 />}  />
+            <Route path='/voc3' element={<Voc3 />} /> 
+            <Route path='/voc3/question3' element={<VocQuestion3 />}  />
+            <Route path='/voc3/:vocId' element={<VocView3 />}  />
+
+            
+
           </Routes>
         </main>
       </Router>

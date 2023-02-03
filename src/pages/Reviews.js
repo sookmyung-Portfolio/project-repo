@@ -1,11 +1,12 @@
 import { Container } from '@mui/system'
 import React from 'react'
+import Voc2 from './VocReview/Voc2'
 
 export default function Reviews() {
   return (
     <>
         <Container maxWidth="sm">
-            <div>Reviews</div>
+            <Voc2 />
         </Container>
     </>
   )

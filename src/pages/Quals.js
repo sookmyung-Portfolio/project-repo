@@ -1,6 +1,6 @@
 import { Container } from '@mui/system'
 import React from 'react'
-import Voc from './Voc'
+import Voc from './VocQuals/Voc'
 
 export default function Quals() {
   return (

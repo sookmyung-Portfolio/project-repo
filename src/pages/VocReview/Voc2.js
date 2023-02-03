@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, Route, Routes, BrowserRouter as Router } from 'react-router-dom';
-import CommonTable from './CommonTable';
-import CommonTableColumn from './CommonTableColumn';
-import CommonTableRow from './CommonTableRow';
-import VocHeader from './VocHeader';
+import CommonTable from '../CommonTable';
+import CommonTableColumn from '../CommonTableColumn';
+import CommonTableRow from '../CommonTableRow';
+import VocHeader2 from './VocHeader2';
 import { Button, Container } from "@mui/material";
 
 function GetData() {
@@ -31,13 +31,13 @@ function GetData() {
   return item;
 }
 
-function Voc() {
+function Voc2() {
   const item = GetData();
 
   return (<>
     <Container maxWidth="sm">
         <div>
-            <VocHeader></VocHeader>
+            <VocHeader2></VocHeader2>
         </div>
     </Container>
         <CommonTable headersName={['글번호', '제목', '등록일', '작성자']}>
@@ -47,4 +47,4 @@ function Voc() {
   </>);
 }
   
-export default Voc;
+export default Voc2;
