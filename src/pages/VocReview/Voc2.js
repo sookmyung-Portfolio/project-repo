@@ -11,7 +11,7 @@ function GetData() {
   const [data, setData] = useState({});
   const [num, setNum] = useState(1);
   useEffect(() => {
-    axios.get('http://localhost:5050/reviews').then((response)=> {
+    axios.get('http://localhost:4040/reviews').then((response)=> {
       setData(response.data);
     })
   }, []);

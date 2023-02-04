@@ -8,50 +8,30 @@ import TextField from "@mui/material/TextField";
 import SendIcon from '@mui/icons-material/Send';
 import DepComboBox from '../DepComboBox';
 
-function GetCategory() {
-  const [category, setCategory] = useState({});
-
-  useEffect(() => {
-    axios.get('http://localhost:5050/questions').then((response)=> {
-      setCategory(response.data);
-    })
-  }, []);
-
-  const categories = (Object.values(category)).map((item) => (
-    <option key={item.id} value={item.id}>
-      {item.displayName}
-    </option>
-  ));
-
-  return categories;
-}
-
 const HandleQuestionSubmit = async({body}) => {
   const headers = {
     'Content-Type' : 'application/json',
     'Authorization' : "Bearer cognito 의 access token"
   }
 
-  const response = await axios.post('http://localhost:5050/questions', body, {headers: headers}).then((response) => {
+  const response = await axios.post('http://localhost:4040/questions', body, {headers: headers}).then((response) => {
     console.log('status : '+response.status);
   }).catch((error) => {
-    console.log('error : '+error);
+    console.log('error임 : '+error);
   });
 }
 
 function VocQuestion3() {
-  const [category, setCategory] = useState(1);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [mainDept, setMainDept] = useState('');
   const [subDept, setSubDept] = useState('');
-  const [stationId, setStationId] = useState('ST-4');
 
   const body = {
-      category : category,
       title: title,
       content: content,
-      stationId: stationId
+      mainDept: mainDept,
+      subDept: subDept
     }
 
   return (<>
@@ -64,7 +44,7 @@ function VocQuestion3() {
             <div className="voc-view-row">
                 <label>제목</label>
                 <TextField size="small" onChange={(event) => setTitle(event.target.value)}></TextField>
-            </div>            
+            </div>           
             <FormControl sx={{ m: 1, width: '60ch' }} variant="filled">
                 <TextField 
                     id="outlined-multiline-static" label="내용" multiline rows={5}
