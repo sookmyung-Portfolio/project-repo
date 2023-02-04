@@ -6,7 +6,11 @@ export default function Reviews() {
   return (
     <>
         <Container maxWidth="sm">
-            <Voc2 />
+          <div style={{ 
+            display: 'flex', justifyContent: 'center', alignItems: 'center', 
+            width: '100%', height: '10vh',}}>
+              <Voc2 />
+          </div>
         </Container>
     </>
   )

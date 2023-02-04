@@ -17,7 +17,7 @@ const CommonTable = props => {
           }
         </tr>
       </thead>
-      <tbody>
+      <tbody style={{ display: 'flex', flexDirection: 'column'}}>
         {
           children
         }

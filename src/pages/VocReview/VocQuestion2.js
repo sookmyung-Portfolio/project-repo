@@ -8,50 +8,28 @@ import TextField from "@mui/material/TextField";
 import SendIcon from '@mui/icons-material/Send';
 import DepComboBox from '../DepComboBox';
 
-function GetCategory() {
-  const [category, setCategory] = useState({});
-
-  useEffect(() => {
-    axios.get('http://127.0.0.1:8000/toyseven/voc/category').then((response)=> {
-      setCategory(response.data);
-    })
-  }, []);
-
-  const categories = (Object.values(category)).map((item) => (
-    <option key={item.id} value={item.id}>
-      {item.displayName}
-    </option>
-  ));
-
-  return categories;
-}
-
 const HandleQuestionSubmit = async({body}) => {
   const headers = {
     'Content-Type' : 'application/json',
     'Authorization' : "Bearer cognito 의 access token"
   }
 
-  const response = await axios.post('http://127.0.0.1:8000/toyseven/voc/question', body, {headers: headers}).then((response) => {
+  const response = await axios.post('http://localhost:5050/reviews', body, {headers: headers}).then((response) => {
     console.log('status : '+response.status);
   }).catch((error) => {
-    console.log('error : '+error);
+    console.log('error임 : '+error);
   });
 }
 
 function VocQuestion2() {
-  const [category, setCategory] = useState(1);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [mainDept, setMainDept] = useState('');
   const [subDept, setSubDept] = useState('');
-  const [stationId, setStationId] = useState('ST-4');
 
   const body = {
-      category : category,
       title: title,
-      content: content,
-      stationId: stationId
+      mainDept: mainDept,
     }
 
   return (<>
@@ -60,7 +38,7 @@ function VocQuestion2() {
             width: '100%', height: '5vh',  
             }}>
         <form style={{ display: 'flex', flexDirection: 'column'}}>
-            <h2 >게시글 작성 - 합격후기게시판</h2>
+            <h2 >게시글 작성 - 취업후기게시판</h2>
             <div className="voc-view-row">
                 <label>제목</label>
                 <TextField size="small" onChange={(event) => setTitle(event.target.value)}></TextField>

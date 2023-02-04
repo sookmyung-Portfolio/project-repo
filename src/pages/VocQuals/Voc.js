@@ -11,16 +11,16 @@ import { Button, Container } from "@mui/material";
 function GetData() {
   const [data, setData] = useState({});
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/toyseven/voc').then((response)=> {
+    axios.get('http://localhost:5050/quals').then((response)=> {
       setData(response.data);
     })
   }, []);
 
   const item = (Object.values(data)).map((item) => (
-    <CommonTableRow key={item.id}>
-      <CommonTableColumn>{item.id}</CommonTableColumn>
+    <CommonTableRow key={item._id}>
+      <CommonTableColumn>{item.title}</CommonTableColumn>
       <CommonTableColumn>
-        <Link to={`/voc/${item.id}`}>
+        <Link to={`/voc/${item._id}`}>
             {item.title}
         </Link>
       </CommonTableColumn>

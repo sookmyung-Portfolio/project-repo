@@ -9,7 +9,7 @@ function GetData(vocId) {
   const [answer, setAnswer] = useState({});
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/toyseven/voc/search/'+vocId).then((response)=> {
+    axios.get('http://localhost:5050/questions').then((response)=> {
         setQuestion(response.data.question);
         setAnswer(response.data.answer);
     })
@@ -19,8 +19,8 @@ function GetData(vocId) {
     <h2 align="center">게시글 상세정보</h2>
     <div className="voc-view-wrapper">
         <div className="voc-view-row">
-            <label>게시글 번호</label>
-            <label>{ question.id }</label>
+            <label>게시글 번호입니다</label>
+            <label>{ question.num }</label>
         </div>
         <div className="voc-view-row">
             <label>제목</label>
@@ -28,7 +28,7 @@ function GetData(vocId) {
         </div>
         <div className="voc-view-row">
             <label>작성일</label>
-            <label>{ question.createDate }</label>
+            <label>{ question.createdAt }</label>
         </div>
         <div className="voc-view-row">
             <label>내용</label>

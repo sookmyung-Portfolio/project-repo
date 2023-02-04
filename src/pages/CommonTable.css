@@ -19,5 +19,13 @@
   }
   
   .common-table-column {
-    padding: 10px 5px;
+    padding: 10px 5px;  /*첫번째 열에 모두 들어가는 것이 해결되면 뒤 5px을 20px 정도로 바꿔도 될 듯*/
+  }
+  
+
+  .table-tbody {
+    width: 80%;
+    margin: 0 auto;
+    /* text-align: center; */
+    border-spacing: 0;
   }
