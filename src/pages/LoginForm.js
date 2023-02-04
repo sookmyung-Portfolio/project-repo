@@ -1,31 +1,40 @@
 import React, { useState } from 'react';
 import { Link, Route } from 'react-router-dom';
 import Auth from './Auth';
+import Home from './Home';
 import Profile from './Profile';
 import TextField from "@mui/material/TextField";
 import { Container } from '@mui/system';
 import { Button } from '@mui/material';
+import CheckForm from './CheckForm';
 
 function LoginForm( {userId} ) {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
   
-  const handleClick = () => {
-    try {
-        var authen = Auth({ id, password });
-        authen ? 
-      	// Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
+  const handleClick = (event) => {
+    event.preventDefault();
+   if(CheckForm({
+      idValue: id, pwValue: password
+    })){
+    fetch('http://localhost:5050/login', {
+      method: 'POST',
+      body: JSON.stringify({
+        email: this.state.idVal,
+        password: this.state.pwVal,
+      }),
+    })
+      .then(response => response.json())
+      .then(response => {
+          response ? 
+      	// 응답하면
           <Route
-          userId={userId}
-          path="/profile"
-          element={<Profile isLogin={userId} user={id}/>}
+          isLogin={null}   //로그인되어 있는 상태로 넘김
+          path="/home"
+          element={<Home user={id}/>}
         /> : 
         <Link to="/login"/>
-        //유저값이 true이면 메인 페이지 혹은 이전 페이지로 리턴, 없으면 회원가입 페이지로 이동 
-    } catch (e) {
-      alert('Failed to login');
-      setId('');
-      setPassword('');
+      });
     }
   };
 

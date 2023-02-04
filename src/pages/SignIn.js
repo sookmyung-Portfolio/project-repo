@@ -10,6 +10,7 @@ import NumComboBox from './NumComboBox';
 import TextField from "@mui/material/TextField";
 import { Container } from '@mui/system';
 import { Button } from '@mui/material';
+import axios from 'axios';
 
 function SignIn() {
   const [id, setId] = useState('');
@@ -17,7 +18,7 @@ function SignIn() {
   const [password, setPassword] = useState('');
   const [confirmedPassword, setConfirmedPassword] = useState('');
   const [finalPassword, setFinalPassword] = useState('');
-  const [nickName, setNickName] = useState('');
+  const [userName, setUserName] = useState('');
   const [finalName, setFinalName] = useState('');
   const [number, setNumber] = useState('');
   const [major, setMajor] = useState('');
@@ -27,12 +28,11 @@ function SignIn() {
    if(CheckForm({
       idValue: finalId, pwValue: finalPassword, nameValue: finalName, numValue: number, depValue: major,
     })){
-    fetch('http://10.58.4.36:8000/users/signup', {
-      method: 'POST',
+    axios.post('http://localhost:5050/register', {
+      headers: { "Content-Type":  "application/json" },
       body: JSON.stringify({
-        email: this.state.idVal,
-        password: this.state.pwVal,
-      }),
+        idValue: finalId, pwValue: finalPassword, nameValue: finalName, numValue: number, depValue: major
+      }),	// json화 해버리기
     })
       .then(response => response.json())
       .then(response => {
@@ -51,10 +51,10 @@ function SignIn() {
 
   const onIdCheckClick = (event) => {
     event.preventDefault();
-    //const data = event.target.value; 원래 이 줄 있어야 함
+    const data = event.target.value; 
 
     //// 이 아래는 작업용으로만 추가
-    if(IdAuth(id)){
+    /*if(IdAuth(id)){
       if(id!== ""){
         alert('사용 가능한 아이디입니다.'); //아이디 확인용
         setFinalId(id);
@@ -64,27 +64,20 @@ function SignIn() {
       }
     } else {
       alert('사용할 수 없는 아이디입니다.');
-    }
-    
-    // fetch('http://localhost:3001/checkid',{ // localhost 3001번 포트 checkid라우터를 찾는다
-    //         method:"post",
-    //         headers: { "Content-Type":  "application/json" },
-    //         body: JSON.stringify(data),	// json화 해버리기
-    //     })
-    //     .then(res => res.json())
-    //     .then(json => {
-    //         console.log("asdasdasdasd");
-    //         if(json.tf === true){		// json을 받아왔는데 .tf 값이 true면 사용가능
-    //             alert("사용가능한 ID입니다");  //알람!
-    //             this.setState({
-    //                 usingid: true
-    //             })
-    //         }
-    //         else{
-    //             alert("다른 ID를 입력해주세요");
-    //         }
-    //     });
-
+    }*/
+    axios.post('http://localhost:5050/checkId', {
+      headers: { "Content-Type":  "application/json" },
+      body: JSON.stringify(data),	// json화 해버리기
+    })
+    .then(function (response) {
+      console.log("사용가능");
+      alert("사용가능한 ID입니다");  //알람!
+      setFinalId(data);
+    })
+    .catch(function (error) {
+      console.log(error);
+      alert("다른 ID를 입력해주세요");
+    });
   }
 
   const onPwCheckClick = (event) => {
@@ -105,34 +98,28 @@ function SignIn() {
 
   const onNameCheckClick = (event) => {
     event.preventDefault();
-    //const data = event.target.value;  원래 있어야 함
+    const data = event.target.value;  
 
-    //// 이 아래는 작업용으로만 추가
+    /* 이 아래는 작업용으로만 추가
     if(NameAuth(nickName)){
       setFinalName(nickName);
     } else {
       alert('사용할 수 없는 아이디입니다.');
-    }
+    }*/
 
-    // fetch('http://localhost:3001/checknickname',{ // localhost 3001번 포트 checkid라우터를 찾는다
-    //         method:"post",
-    //         headers: { "Content-Type":  "application/json" },
-    //         body: JSON.stringify(data),	// json화 해버리기
-    //     })
-    //     .then(res => res.json())
-    //     .then(json => {
-    //         console.log("asdasdasdasd");
-    //         if(json.tf === true){		// json을 받아왔는데 .tf 값이 true면 사용가능
-    //             alert("사용가능한 ID입니다");  //알람!
-    //             this.setState({
-    //                 usingid: true
-    //             })
-    //         }
-    //         else{
-    //             alert("다른 ID를 입력해주세요");
-    //         }
-    //  });
-
+    axios.post('http://localhost:5050/checkUsername', {
+      headers: { "Content-Type":  "application/json" },
+      body: JSON.stringify(data),	// json화 해버리기
+    })
+    .then(function (response) {
+      console.log("사용가능");
+      alert("사용가능한 닉네임입니다");  //알람!
+      setFinalName(data);
+    })
+    .catch(function (error) {
+      console.log(error);
+      alert("다른 닉네임을 입력해주세요");
+    });
   }
   
   return (
@@ -194,8 +181,8 @@ function SignIn() {
                 required
                 id="outlined-required"
                 label="닉네임"
-                value={nickName}
-                onChange={({ target: { value } }) => setNickName(value)}   ///닉네임 중복확인  ok
+                value={userName}
+                onChange={({ target: { value } }) => setUserName(value)}   ///닉네임 중복확인  ok
                 type="text"
                 placeholder="닉네임" 
                 minlength="3" maxlength="6"

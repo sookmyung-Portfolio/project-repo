@@ -29,7 +29,9 @@ function VocQuestion2() {
 
   const body = {
       title: title,
+      content: content,
       mainDept: mainDept,
+      subDept: subDept
     }
 
   return (<>

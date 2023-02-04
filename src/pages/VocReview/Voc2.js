@@ -28,7 +28,7 @@ function GetData() {
       <CommonTableColumn>{item.username}</CommonTableColumn>
     </CommonTableRow>
   ));
-  // 문제: createAt값이 넘어오지 않음, 글번호란(첫번째 열)에 모든 정보가 적용됨
+  // 문제: createAt값이 넘어오지 않음, 글번호란(첫번째 열)에 모든 정보가 적용됨  NaN
 
   return item;
 }
