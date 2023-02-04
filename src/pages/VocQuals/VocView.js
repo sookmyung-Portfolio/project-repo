@@ -11,7 +11,7 @@ function GetData(Id) {
     const [data, setData] = useState({});
 
     useEffect(() => {
-      axios.get('http://localhost:4040/quals/'+Id).then((response)=> {
+      axios.get('http://localhost:5050/quals/'+Id).then((response)=> {
         setData(response.data);
         //console.log("ddddddd");
       })

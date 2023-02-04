@@ -14,7 +14,7 @@ const HandleQuestionSubmit = async({body}) => {
     'Authorization' : "Bearer cognito 의 access token"
   }
 
-  const response = await axios.post('http://localhost:4040/reviews', body, {headers: headers}).then((response) => {
+  const response = await axios.post('http://localhost:5050/reviews', body, {headers: headers}).then((response) => {
     console.log('status : '+response.status);
   }).catch((error) => {
     console.log('error임 : '+error);

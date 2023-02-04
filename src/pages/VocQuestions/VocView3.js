@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import './VocView3.css';
 import { Link } from 'react-router-dom';
 import { Container } from "@mui/material";
+import Comments from '../Comments';
 
 function GetData(Id) {
     const [question, setQuestion] = useState({});
@@ -11,7 +12,7 @@ function GetData(Id) {
     
     const [data, setData] = useState({});
     useEffect(() => {
-      axios.get('http://localhost:4040/questions/'+Id).then((response)=> {
+      axios.get('http://localhost:5050/questions/'+Id).then((response)=> {
         setData(response.data);
         //console.log("ddddddd");
       })
@@ -64,6 +65,7 @@ function GetData(Id) {
               <div>
                   {item}
               </div>
+              <Comments />
           </Container>
       </div>
     </>);

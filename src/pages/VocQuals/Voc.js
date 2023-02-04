@@ -13,7 +13,7 @@ function GetData() {
   const [num, setNum] = useState(1);
   
   useEffect(() => {
-    axios.get('http://localhost:4040/quals').then((response)=> {
+    axios.get('http://localhost:5050/quals').then((response)=> {
       setData(response.data);
     })
   }, []);
