@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -17,8 +17,9 @@ import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
 import { Link, BrowserRouter as Router } from 'react-router-dom';
 import Intro from "./Intro";
+import axios from 'axios';
 
-const pages = ['login', 'signin'];
+//const pages = ['login', 'signin'];
 const settings = ['Profile', 'Logout'];
 
 function NavBar() {
@@ -91,6 +92,20 @@ function NavBar() {
     setOpen(false);
   };
 
+  
+
+  //유저 로그인 상태관리
+  const [user, setUser] = useState();
+  const [isLogin, setIsLogin] = useState();
+  useEffect(() => {
+    axios.get('http://localhost:5050/auth').then((response)=> {  
+      setUser(response.data.name);  //user값이 있으면
+      setIsLogin(response.data.token);  //token 값이 있으면
+      console.log(response.data.token, "user 토큰 값");
+      console.log(response.data.name, "user 닉네임 값");
+    })
+  }, []);
+
   return (
     <>
        <AppBar position="static" enableColorOnDark="true">
@@ -162,20 +177,25 @@ function NavBar() {
                   inputProps={{ 'aria-label': 'search' }}
                 />
               </Search>
-              <Link to="/login">
-                <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+
+                <Box >
                     <Button href="/login" sx={{ my: 2, color: 'white', display: 'block' }}>
-                    login
+                    login 여기 처리
                     </Button>
                 </Box>
-              </Link>
-              <Link to="/signin">
-                <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                    <Button href="/signin" sx={{ my: 2, color: 'white', display: 'block' }}>
-                    signin
-                    </Button>
-                </Box>
-              </Link>
+
+                {
+                  user ?
+                  <p> Hi! {user} </p>
+                  :
+                  <Box >
+                      <Button href="/signin" sx={{ my: 2, color: 'white', display: 'block' }}>
+                      signin
+                      </Button>
+                  </Box>
+                }
+
+                
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

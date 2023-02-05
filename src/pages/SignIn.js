@@ -21,9 +21,13 @@ function SignIn() {
   const [major, setMajor] = useState('');
 
 
-  const handleSubmitClick = (event) => {
-    event.preventDefault();
-   
+  const handleSubmitClick = () => {
+    console.log(finalId, "finalId 결과값");
+    console.log(finalPassword, "finalPassword 결과값");
+    console.log(userName, "userName 결과값");
+    console.log(number, "number 결과값");
+    console.log(major, "major");
+
     axios.post('http://localhost:5050/register',
       // 클라이언트에서 서버로 request(요청)하며 보내주는 데이터
       // 회원가입창에서 클라이언트가 입력하는 데이터
@@ -57,38 +61,45 @@ function SignIn() {
       })
   };
 
-  const onIdCheckClick = (event) => {
-    event.preventDefault();
-
-    axios.post('http://localhost:5050/checkId',
-      // 클라이언트에서 서버로 request(요청)하며 보내주는 데이터
-      // 회원가입창에서 클라이언트가 입력하는 데이터
-      {
-        id: id,
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          // 'Accept': 'application/json',
+  const onIdCheckClick = () => {
+    
+      axios.post('http://localhost:5050/checkId',
+        // 클라이언트에서 서버로 request(요청)하며 보내주는 데이터
+        // 회원가입창에서 클라이언트가 입력하는 데이터
+        {
+          id: id 
         },
-      })
-      // 그러면 서버에서 클라이언트로 response(응답)으로 
-      // {ok: true} 아니면 {ok: false}가 온다.
-      // .then((response) => {
-      //   console.log(response); // response.data로 해야?
-      // })
-      .then((result) => {
-        setFinalId(id);
-        console.log(finalId, "finalId");
-        console.log("id!!!");
-        window.alert('사용할 수 있는 아이디입니다.');
-        <Link to="/login"/>
-      })
-      .catch((error) => {
-        window.alert('사용할 수 없는 아이디입니다.');
-        console.log(error);
-      })
-  }
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            // 'Accept': 'application/json',
+          },
+        })
+        // 그러면 서버에서 클라이언트로 response(응답)으로 
+        // {ok: true} 아니면 {ok: false}가 온다.
+        // .then((response) => {
+        //   console.log(response); // response.data로 해야?
+        // })
+        .then((result) => {
+          console.log(result.data, "결과값");
+          console.log(result.data.success, "LoginSuccess 결과값");
+          if (result.data.success === true){
+          // 성공하면
+            window.alert("사용할 수 있는 아이디입니다.");
+            setFinalId(id);
+            console.log(finalId,"최종 ID입니다.");
+          } else if (result.data.success === false) {
+            window.alert("사용할 수 없는 아이디입니다.");
+            console.log("사용할 수 없는 아이디");
+            setId("");
+          }
+        })
+        .catch((error) => {
+          window.alert("아이디 등록 실패");
+          console.log(error);
+        })
+    };
+  
 
   const onPwCheckClick = (event) => {
     event.preventDefault();
@@ -106,38 +117,43 @@ function SignIn() {
     }
   }
 
-  const onNameCheckClick = (event) => {
-    event.preventDefault();
-    const data = event.target.value;  
-    console.log(data, "데이터");
+  const onNameCheckClick = () => {
 
-    /* 이 아래는 작업용으로만 추가
-    if(NameAuth(nickName)){
-      setFinalName(nickName);
-    } else {
-      alert('사용할 수 없는 아이디입니다.');
-    }*/
-
-    axios.post('http://localhost:5050/checkUsername', {
-      headers: { "Content-Type":  "application/json" },
-      body: JSON.stringify(data),	// json화 해버리기
-    })
-    .then(function(response) {   //기존에는 response.data와 같은 형식으로 정보를 받아왔는데 만약 boolean값을 리턴한다면 어떤 항목?
-      console.log(response.data , "닉네임 확인 값");
-      if(response.data.success === true){   
-        console.log("사용가능");
-        alert("사용가능한 닉네임입니다");  //알람!
-        setFinalName(data);
-        console.log(data, "데이터");
-        console.log(finalName, "최종 닉네임");
-      }
-      else{
-        alert("다른 닉네임을 입력해주세요");
-      }
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+    axios.post('http://localhost:5050/checkUsername',
+        // 클라이언트에서 서버로 request(요청)하며 보내주는 데이터
+        // 회원가입창에서 클라이언트가 입력하는 데이터
+        {
+          name: userName 
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            // 'Accept': 'application/json',
+          },
+        })
+        // 그러면 서버에서 클라이언트로 response(응답)으로 
+        // {ok: true} 아니면 {ok: false}가 온다.
+        // .then((response) => {
+        //   console.log(response); // response.data로 해야?
+        // })
+        .then((result) => {
+          console.log(result.data, "결과값");
+          console.log(result.data.success, "LoginSuccess 결과값");
+          if (result.data.success === true){
+          // 성공하면
+          window.alert("사용할 수 있는 닉네임입니다.");
+          setFinalName(userName);
+          console.log(userName,"최종 닉네임입니다.");
+          } else if (result.data.success === false) {
+            window.alert("사용할 수 없는 닉네임입니다.");
+            console.log("사용할 수 없는 닉네임");
+            setId("");
+          }
+        })
+        .catch((error) => {
+          window.alert("닉네임 등록 실패");
+          console.log(error);
+        });
   }
   
   return (

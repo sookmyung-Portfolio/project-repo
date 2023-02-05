@@ -21,33 +21,44 @@ import VocQuestion2 from './pages/VocReview/VocQuestion2';
 import Voc3 from './pages/VocQuestions/Voc3';
 import VocView3 from './pages/VocQuestions/VocView3';
 import VocQuestion3 from './pages/VocQuestions/VocQuestions3';
+import axios from 'axios';
+
 
 function App() {
+  //유저 로그인 상태관리
+  const [user, setUser] = useState();
+  const [isLogin, setIsLogin] = useState();
+  useEffect(() => {
+    axios.get('http://localhost:5050/auth').then((response)=> {  
+      setUser(response.data.name);  //user값이 있으면
+      setIsLogin(response.data.token);  //token 값이 있으면
+      console.log(response.data.token, "home user 토큰 값");
+      console.log(response.data.name, "home user 닉네임 값");
+    })
+  }, []);
+
+
   // 로그인 상태 관리
   const [userId, setUserId] = useState(null);
- 
-  const [isLogin, setIsLogin] = useState(null);
   
-  useEffect(() => {
-    if(sessionStorage.getItem({userId}) === null){
-    // sessionStorage 에 user_id 라는 key 값으로 저장된 값이 없다면
-      console.log('isLogin ?? :: ', isLogin)
-    } else {
-    // sessionStorage 에 user_id 라는 key 값으로 저장된 값이 있다면
-    // 로그인 상태 변경
-      setIsLogin(true)
-      console.log('isLogin ?? :: ', isLogin)
+  /*useEffect(() => {
+    const userData = GetData();
+    setUserId(userData.id);
+    if(userData.token){  //user 데이터의 토큰이 존재하면
+      setIsLogin(true);
     }
-  }, [userId, isLogin]);
+  }, []);*/
 
   const logout = () => setIsLogin(false);
+
+  
 
   return (
     <>
     <Router>
       <header>
         <NavBar />
-        <img src={ full } width="100%"/>
+        <img src={ full } width="100%"/> 
       </header>                               
       <hr />
         <aside >
