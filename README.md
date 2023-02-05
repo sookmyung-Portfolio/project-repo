@@ -30,13 +30,13 @@ React, Node.js, mongoDB, mongoose, JWT
 <details>
 <summary>질문게시판</summary>
 <div markdown="1">       
-    - 내용1
+    -내용1
 </div>
 </details>
 <details>
 <summary>후기게시판</summary>
-<div markdown="1">       
-    - 내용1
+<div markdown="3">       
+    - 안녕
 </div>
 </details>
 <details>
@@ -46,7 +46,7 @@ React, Node.js, mongoDB, mongoose, JWT
 </div>
 </details>
 <details>
-<summary>북마크 (추후 개발 예정)</summary>
+<summary>북마크 (추후 구현 예정)</summary>
 <div markdown="1">       
     - 내용1
 </div>
