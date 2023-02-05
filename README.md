@@ -48,6 +48,7 @@ React, Node.js, mongoDB, mongoose, JWT
 <details>
     <summary>회원가입</summary>
     <img width="1512" alt="image" src="https://user-images.githubusercontent.com/70712293/216830817-f25a91fa-c6e5-425f-98b2-25c3d8fd09eb.png">
+
 <!-- - 아이디는 3자 이상 영문 ,숫자, _ 만 사용 가능하고 패스워드는 아이디가 포함되지 않는 4자 이상 사용할 수 있어요.  -->
 - 닉네임은 공백을 제외한 2자~10자 사용할 수 있어요.
 - 아이디, 닉네임 중복확인 여부를 서버에 요청을 보내면 기존 사용자의 아이디, 닉네임과 중복되는지 체크합니다.
@@ -61,6 +62,7 @@ React, Node.js, mongoDB, mongoose, JWT
     <summary>질문게시판</summary>
     <img width="1503" alt="image" src="https://user-images.githubusercontent.com/70712293/216830335-3dcc11dd-7209-4313-8a8e-57729238b470.png">
     <img width="1500" alt="image" src="https://user-images.githubusercontent.com/70712293/216830354-5da656c6-5515-43e4-9254-48b4854e27b9.png">
+    
 - 로그인한 사용자만 글 작성이 가능합니다.
 - 제목과 내용을 작성하여 글쓰기 버튼을 누르면 게시글을 등록할 수 있습니다.
 - 누구든지 글의 제목, 작성자, 작성일, 댓글을 확인할 수 있습니다.
@@ -74,6 +76,7 @@ React, Node.js, mongoDB, mongoose, JWT
     <summary>후기게시판</summary>
     <img width="1504" alt="image" src="https://user-images.githubusercontent.com/70712293/216830419-288d323f-7cca-4917-a285-fb8cbb3c093c.png">
     <img width="1501" alt="image" src="https://user-images.githubusercontent.com/70712293/216830425-9783dd14-d892-4b60-854b-bf9dd1035039.png">
+    
 - 로그인한 사용자만 글 작성이 가능합니다.
 - 제목과 내용을 작성하여 글쓰기 버튼을 누르면 게시글을 등록할 수 있습니다.
 - 누구든지 글의 제목, 작성자, 작성일을 확인할 수 있습니다.
@@ -85,6 +88,7 @@ React, Node.js, mongoDB, mongoose, JWT
     <summary>스펙게시판</summary>
     <img width="1511" alt="image" src="https://user-images.githubusercontent.com/70712293/216830531-cffc686a-626d-427d-a71a-3d98c249ace2.png">
     <img width="1512" alt="image" src="https://user-images.githubusercontent.com/70712293/216830548-98c69397-3a50-4a15-8b75-6560308d12f8.png">
+    
 - 로그인한 사용자만 글 작성이 가능합니다.
 - 제목과 내용을 작성하여 글쓰기 버튼을 누르면 게시글을 등록할 수 있습니다.
 - 누구든지 글의 제목, 작성자, 작성일을 확인할 수 있습니다.
