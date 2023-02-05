@@ -81,13 +81,16 @@ React, Node.js, mongoDB, mongoose, JWT
 |      |  기능  | Method |URL|request|response|
 | :- | :- | :- | :- | :- | :- |
 | 메인 페이지 |  화면 표시   |  GET|/||index.html|
-| |글 리스트| GET | /list | |{ postId, title, nickname, date }...|
 | |접속 정보|GET|/user| |nickname|
 |로그인|화면 표시|GET|/login| |login.html|
 | |사용자 접속|POST|/login|{ id, password }|success \|\| empty \|\| fail|
 |회원가입|화면 표시|GET|/register||register.html|
 | |등록 요청|POST|/register|{ id, password, password_re, nickname }|success \|\| empty \|\| wrong_id \|\| wrong_nickname \|\| wrong_password \|\| already_id \|\| already_nickname \|\| diff_password |
 | 글 작성 페이지 | 화면 표시 | GET | /new | | new.html |
+| |질문게시판 글 리스트| GET | /questions | |{ postId, title, nickname, date }...|
+| |질문게시판 글 조회| GET | /questions/:postId | |{ postId, title, nickname, date }...|
+| |질문게시판 글 작성| GET | /list | |{ postId, title, nickname, date }...|
+| |글 리스트| GET | /list | |{ postId, title, nickname, date }...|    
 | | 글 작성 | POST | /new | { title, content} | success \|\| empty \|\| fail |
 |  상세 페이지 |  화면 표시   | GET | /:postId | | detail.html |
 | | 글 상세 정보 | GET | /list/:postId | |    {title, nickname, content, date}  |
