@@ -11,14 +11,13 @@ React, Node.js, mongoDB, mongoose, JWT
 ## 주요기능
 <details>
 <summary>메인페이지</summary>
-<div markdown="1">       
-    - 내용1
-</div>
+    <ul> 로그인한 사용자만 해당 기능을 이용할 수 있습니다.</ul>
+    
 </details>
 <details>
 <summary>로그인페이지</summary>
 <div markdown="1">       
-    - 내용1
+    <ol> 사용자는 아이디와 패스워드를 입력하여 로그인을 요청합니다..</ol>
 </div>
 </details>
 <details>
