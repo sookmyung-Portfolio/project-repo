@@ -113,7 +113,7 @@ React, Node.js, mongoDB, mongoose, JWT
 <!-- - 외부로 보이는 모든 정보는 XSS 공격을 대비해 sanitize-html 모듈을 활용하여 데이터를 저장하고 보여줍니다.제목과 내용을 작성하여 글쓰기 버튼을 누르면 게시글을 등록할 수 있습니다. -->
 </details>
 
-## API 목록
+## API 목록 (추후 추가 및 수정 예정)
 <details>
     <summary>자세히</summary>
 
