@@ -12,20 +12,29 @@
 
 ## 사용한것
 React, Node.js, mongoDB, mongoose, JWT
+
 ## 주요기능
+<ol> 메인 페이지: 페이지 접속 시 첫 화면</ol>
+<ol> 회원가입: 아이디, 비밀번호, 닉네임, 학번, 전공을 입력하고 회원가입을 진행할 수 있습니다. </ol>
+<ol> 로그인, 로그아웃: 아이디, 패스워드를 입력하여 로그인과 로그아웃 버튼을 통해 로그아웃을 할 수 있습니다. </ol>
+<ol> 글 작성, 수정, 삭제: 로그인한 사용자는 글을 작성하여 게시할 수 있고 자신이 작성한 글만 수정 및 삭제가 가능합니다. </ol>
+<ol> (질문게시판) 댓글 작성, 수정, 삭제: 로그인한 사용자는 댓글을 달 수 있고 자신의 댓글만 수정 및 삭제가 가능. </ol>
+
+
+## 페이지별 기능 상세 설명
 <details>
 <summary>메인페이지</summary>
-    <ol>로그인한 사용자만 해당 기능을 이용할 수 있습니다.</ol>
+    <img width="1508" alt="image" src="https://user-images.githubusercontent.com/70712293/216829054-a2e75b62-eb0f-40c4-9f60-07d40b7fd7a6.png">
+
     
 </details>
 <details>
-<summary>로그인페이지</summary>
-<div markdown="1">       
+<summary>로그인페이지</summary> 
+<img width="1510" alt="image" src="https://user-images.githubusercontent.com/70712293/216829112-18582c60-e8c9-4e46-b302-d2f5da0b9a51.png">
     <ol>사용자는 아이디와 패스워드를 입력하여 로그인을 요청합니다.</ol>
     <ol>서버는 DB와 해당 사용자가 존재한다면 토큰을 발급하고 로그인 요청을 승인합니다.</ol>
     <ol>로그인 성공 시 메인페이지로 이동합니다.</ol>
     
-</div>
 </details>
 <details>
 <summary>회원가입</summary>
@@ -75,8 +84,6 @@ React, Node.js, mongoDB, mongoose, JWT
     <ol>외부로 보이는 모든 정보는 XSS 공격을 대비해 sanitize-html 모듈을 활용하여 데이터를 저장하고 보여줍니다.</ol>
 </div>
 </details>
-
-## 페이지별 기능 상세 설명
 
 ## API 목록
 <details>
